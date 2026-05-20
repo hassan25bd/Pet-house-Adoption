@@ -91,7 +91,7 @@ const Banner = () => (
           { src: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=300&fit=crop&crop=face', alt: 'Golden Retriever', label: 'Dogs' },
           { src: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=300&fit=crop&crop=face', alt: 'Orange Cat', label: 'Cats' },
           { src: 'https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?w=400&h=300&fit=crop&crop=top', alt: 'Colorful Parrot', label: 'Birds' },
-          { src: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=400&h=300&fit=crop&crop=top', alt: 'Rabbit', label: 'Rabbits' },
+          { src: 'https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=400&h=300&fit=crop&crop=face', alt: 'Rabbit', label: 'Rabbits' },
         ].map((img, i) => (
           <motion.div
             key={img.label}
