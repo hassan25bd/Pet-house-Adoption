@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiArrowRight, FiSearch } from 'react-icons/fi';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 40 },
@@ -10,18 +8,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.6, delay, ease: 'easeOut' },
 });
 
-const Banner = () => {
-  const axiosPublic = useAxiosPublic();
-  const { data: stats } = useQuery({
-    queryKey: ['stats'],
-    queryFn: () => axiosPublic.get('/stats').then(r => r.data),
-  });
-
-  const availablePets = stats?.availablePets ?? 0;
-  const adoptedPets   = stats?.adoptedPets   ?? 0;
-  const totalUsers    = stats?.totalUsers     ?? 0;
-
-  return (
+const Banner = () => (
   <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
     {/* Background blobs */}
     <div className="absolute top-20 right-10 w-96 h-96 bg-brand/10 rounded-full blur-3xl pointer-events-none" />
@@ -32,7 +19,7 @@ const Banner = () => {
       <div>
         <motion.div {...fadeUp(0.1)}>
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-brand/10 text-brand rounded-full text-sm font-semibold mb-6">
-            🐾 {availablePets > 0 ? `Over ${availablePets} pets need a home` : 'Pets are waiting for a home'}
+            🐾 Over 2,000 pets need a home
           </span>
         </motion.div>
 
@@ -81,14 +68,12 @@ const Banner = () => {
         {/* Stats row */}
         <motion.div {...fadeUp(0.6)} className="mt-10 flex flex-wrap gap-8">
           {[
-            { value: availablePets, label: 'Pets Available' },
-            { value: adoptedPets,   label: 'Happy Adoptions' },
-            { value: totalUsers,    label: 'Registered Users' },
+            { value: '2,500+', label: 'Pets Available' },
+            { value: '1,800+', label: 'Happy Adoptions' },
+            { value: '50+', label: 'Partner Shelters' },
           ].map((stat) => (
             <div key={stat.label}>
-              <p className="font-display font-extrabold text-2xl text-gray-900 dark:text-white">
-                {stat.value > 0 ? `${stat.value}+` : '—'}
-              </p>
+              <p className="font-display font-extrabold text-2xl text-gray-900 dark:text-white">{stat.value}</p>
               <p className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
             </div>
           ))}
@@ -123,7 +108,6 @@ const Banner = () => {
       </motion.div>
     </div>
   </section>
-  );
-};
+);
 
 export default Banner;
