@@ -96,18 +96,32 @@ const Navbar = () => {
               </NavLink>
             ))}
             {user && (
-              <NavLink
-                to="/dashboard/my-requests"
-                className={({ isActive }) =>
-                  `px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                    isActive
-                      ? 'text-brand bg-orange-50 dark:bg-orange-900/20'
-                      : 'text-gray-600 dark:text-gray-300 hover:text-brand hover:bg-gray-50 dark:hover:bg-gray-800'
-                  }`
-                }
-              >
-                My Requests
-              </NavLink>
+              <>
+                <NavLink
+                  to="/dashboard/my-requests"
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                      isActive
+                        ? 'text-brand bg-orange-50 dark:bg-orange-900/20'
+                        : 'text-gray-600 dark:text-gray-300 hover:text-brand hover:bg-gray-50 dark:hover:bg-gray-800'
+                    }`
+                  }
+                >
+                  My Requests
+                </NavLink>
+                <NavLink
+                  to="/dashboard/add-pet"
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                      isActive
+                        ? 'text-brand bg-orange-50 dark:bg-orange-900/20'
+                        : 'text-gray-600 dark:text-gray-300 hover:text-brand hover:bg-gray-50 dark:hover:bg-gray-800'
+                    }`
+                  }
+                >
+                  Add Pet
+                </NavLink>
+              </>
             )}
           </div>
 
@@ -228,17 +242,30 @@ const Navbar = () => {
                   </NavLink>
                 ))}
                 {user && (
-                  <NavLink
-                    to="/dashboard/my-requests"
-                    onClick={() => setMobileOpen(false)}
-                    className={({ isActive }) =>
-                      `block px-4 py-3 rounded-xl text-sm font-medium ${
-                        isActive ? 'text-brand bg-orange-50 dark:bg-orange-900/20' : 'text-gray-700 dark:text-gray-300'
-                      }`
-                    }
-                  >
-                    My Requests
-                  </NavLink>
+                  <>
+                    <NavLink
+                      to="/dashboard/my-requests"
+                      onClick={() => setMobileOpen(false)}
+                      className={({ isActive }) =>
+                        `block px-4 py-3 rounded-xl text-sm font-medium ${
+                          isActive ? 'text-brand bg-orange-50 dark:bg-orange-900/20' : 'text-gray-700 dark:text-gray-300'
+                        }`
+                      }
+                    >
+                      My Requests
+                    </NavLink>
+                    <NavLink
+                      to="/dashboard/add-pet"
+                      onClick={() => setMobileOpen(false)}
+                      className={({ isActive }) =>
+                        `block px-4 py-3 rounded-xl text-sm font-medium ${
+                          isActive ? 'text-brand bg-orange-50 dark:bg-orange-900/20' : 'text-gray-700 dark:text-gray-300'
+                        }`
+                      }
+                    >
+                      Add Pet
+                    </NavLink>
+                  </>
                 )}
               </div>
             </motion.div>
