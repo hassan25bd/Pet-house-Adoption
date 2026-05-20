@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+/* ── CSS Variables (Light theme) ─────────────────────────────── */
+:root {
+  --bg: #fffbf7;
+  --bg-secondary: #f9f4ef;
+  --text: #1a1a1a;
+  --text-secondary: #6b7280;
+  --border: #e5e7eb;
+  --card: #ffffff;
+}
+
+.dark {
+  --bg: #0b0b0f;
+  --bg-secondary: #111118;
+  --text: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border: #1f2937;
+  --card: #111827;
+}
+
+/* ── Base ─────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #FF6B35; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #e55a25; }
+
+/* ── Selection ───────────────────────────────────────────────── */
+::selection { background: #FF6B3530; color: inherit; }
+
+/* ── Utilities ───────────────────────────────────────────────── */
+.brand-gradient {
+  background: linear-gradient(135deg, #FF6B35 0%, #f59e0b 100%);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.dark .glass {
+  background: rgba(17, 24, 39, 0.7);
+}
+
+/* ── Animations ──────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-16px); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+/* ── Page transition ─────────────────────────────────────────── */
+.page-enter  { opacity: 0; transform: translateY(12px); }
+.page-enter-active { opacity: 1; transform: translateY(0); transition: opacity 300ms, transform 300ms; }
+.page-exit   { opacity: 1; }
+.page-exit-active { opacity: 0; transition: opacity 200ms; }
+
+/* ── React Hot Toast override ────────────────────────────────── */
+.hot-toast-container { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+
+/* ── Focus visible ───────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #FF6B35;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Date input dark mode ────────────────────────────────────── */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: var(--cal-filter, none);
+}
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  --cal-filter: invert(1);
+}
+
+/* ── Swiper overrides ────────────────────────────────────────── */
+.swiper-pagination-bullet-active { background: #FF6B35 !important; }
+.swiper-button-next,
+.swiper-button-prev { color: #FF6B35 !important; }
